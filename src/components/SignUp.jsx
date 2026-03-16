@@ -41,6 +41,11 @@ const SignUp = () => {
     setLoading("")
     setSuccess(response.data.message)
 
+    setUsername("")
+    setEmail("")
+    setPhone("")
+    setPassword("")
+
    } catch (error) {
 
       setLoading("")
