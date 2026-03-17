@@ -6,6 +6,7 @@ import axios from 'axios'
 const SignIn = () => {
 
   // hooks(store data in the db collected by the form-input)
+  // useState - used to initialize our hooks
     const[email,setEmail]=useState("")
     const[password,setPassword]=useState("")
    
@@ -24,7 +25,7 @@ const SignIn = () => {
     // async enable multiple process to occur
     // async and await - enable us to retrieve data in db
     const submit=async(e)=>{
-      e.preventDefault()
+      e.preventDefault(); {/*used to prevent the page from reloading  */}
       setLoading("Please wait...")// displays message as data is being worked on
     
     

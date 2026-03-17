@@ -16,7 +16,7 @@ const AddProducts = () => {
 
 
   const submit=async(e)=>{
-    e.preventDefault()
+    e.preventDefault();
     setLoading("just a moment as we upload your product")
 
   
