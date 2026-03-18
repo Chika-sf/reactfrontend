@@ -1,6 +1,7 @@
 import React from 'react'
-import { useState,useEffect } from 'react'
+import { useState,useEffect, } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const GetProducts = () => {
 
@@ -9,6 +10,9 @@ const GetProducts = () => {
   const[loading,setLoading]=useState("")
   const[error,setError]=useState("")
   const[products,setProducts]=useState([])
+
+  // initialize the navigate hook
+  const navigate=useNavigate()
 
   const image_url="https://chikadrian.alwaysdata.net/static/images/"
 
@@ -37,7 +41,7 @@ const GetProducts = () => {
     }
   }
 
-  // end of function where we call useEffect
+  // end of function where we call useEffect - its allow you to retrieve data from api
   useEffect(()=>{
     fetchproducts()
   },[])
@@ -49,7 +53,7 @@ const GetProducts = () => {
       <p className='text-warning'>{loading}</p>
       <p className='text-danger'>{error}</p>
 
-      {/* calling .map to iterate through aech item */}
+      {/* calling .map to iterate through each item */}
 
 
       {products.map((product)=>(
@@ -62,12 +66,14 @@ const GetProducts = () => {
 
         <div className='card shadow mt-4'>
 
-          <img src={image_url+product.product_photo} alt="nike" className='product_img mt-3'/>
+          <img src={image_url+product.product_photo} alt="shoes" className='product_img mt-3'/>
           <div className='card-body'>
             <h5 className='text-success'>{product.product_name}</h5>
             <p className='text-secondary'>{product.product_description}</p>
             <p className='text-warning'>{product.product_cost}</p>
-            <input type="button" className='btn btn-secondary w-100' value="Make payments"/>
+            <input type="button" className='btn btn-secondary w-100' value="Purchase Now"
+              onClick={()=>navigate("/mpesa",{state:{product}})}
+            />
 
           </div>
 
