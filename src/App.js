@@ -1,62 +1,59 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
-import { BrowserRouter as Router,Routes,Route,Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import GetProducts from './components/GetProducts';
 import AddProducts from './components/AddProducts';
 import Mpesa from './components/Mpesa';
+import Footer from './components/Footer';
 
-
-
-
+import Rent from './components/Rent';
+import Buy from './components/Buy';
+import Contact from './components/Contact';
+import Chatbot from './components/Chatbot';
+import Navbar from './components/Navbar';
 
 
 function App() {
-  return (
-    <Router>
-    <div className="App">
-      <header className="App-header">
-        <h1 className='text-success'>Sokogarden-Buy and sell online</h1>
-      </header>
-
-      <nav>
-        <Link to="/" className='btn btn-dark m-2 text-white '>Get Products</Link>
-        <Link to="/signin" className='btn btn-dark m-2 text-white'>Sign In</Link>
-        <Link to="/signup" className='btn btn-dark m-2 text-white' >Sign Up</Link>
-        <Link to="/addproducts" className='btn btn-dark m-2 text-white'>Add Products</Link>
-        
-        
-      </nav>
-
-
-
-
-
-      
-      <Routes>
-          <Route path='/signin' element={<SignIn/>}/>
-          <Route  path='/signup' element={<SignUp/>}/>
-          <Route path='/' element={<GetProducts/>}/>
-          <Route path='/addproducts' element={<AddProducts/>}/>
-          <Route path='/mpesa' element={<Mpesa/>}/>
-      </Routes>
-      
 
   
-    
+  
 
+ 
 
+  return (
 
+    <Router>
+      <div className="App">
 
+       <Navbar/>
+      
+      
 
+        <div className="main-content">
+        <Routes>
+          <Route path='/signin' element={<SignIn />} />
+          <Route path='/signup' element={<SignUp />} />
+          <Route path='/' element={<GetProducts />} />
+          <Route path='/rent' element={<Rent/>}/>
+          <Route path='/buy' element={<Buy/>}/>
+          <Route path='/contact' element={<Contact/>}/>
+          <Route path='/addproduct' element={<AddProducts />} />
+          <Route path='/mpesa' element={<Mpesa />} />
+        </Routes>
+        </div>
+       
+       <Chatbot/>
 
-   
-    </div>
+        <Footer />
+
+      </div>
     </Router>
-     );
+  );
 }
 
 export default App;

@@ -7,6 +7,7 @@ const AddProducts = () => {
   const[product_description,setProductdescription]=useState("")
   const[product_cost,setProductcost]=useState("")
   const[product_photo,setProductphoto]=useState("")
+  const[product_type,setProductType]=useState("")
 
 
   const[loading,setLoading]=useState("")
@@ -27,18 +28,19 @@ const AddProducts = () => {
       data.append("product_description",product_description)
       data.append("product_cost",product_cost)
       data.append("product_photo",product_photo)
+      data.append("product_type", product_type)
 
-      const Response=await axios.post("https://chikadrian.alwaysdata.net/api/addproducts",data)
+      const response=await axios.post("https://chikadrian1.alwaysdata.net/api/addproducts",data)
 
+      console.log(response)
       setLoading("")
-      setSuccess(Response.data.message)
+      setSuccess(response.data.message)
 
       setProductname("")
       setProductdescription("")
       setProductcost("")
       setProductphoto("")
 
-      setSuccess("")
 
     } catch (error) {
       setError(error.data.message)
@@ -76,6 +78,12 @@ const AddProducts = () => {
 
         <input type="text" placeholder='Enter Product Cost' required className='form-control' onChange={(e)=>setProductcost(e.target.value)} value={product_cost}/>
         <br />
+        <select className="form-select"
+        onChange={(e)=>setProductType(e.target.value)}>
+          <option value="">-- select type--</option>
+          <option value="buy">Buy</option>
+          <option value="rent">Rent</option>
+        </select>
 
         <h3>Upload Product Photo</h3>
 

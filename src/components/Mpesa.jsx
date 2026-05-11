@@ -13,7 +13,7 @@ const Mpesa = () => {
   // uselocation allows us to recieve product from the getproductsdetails
   const{product}=useLocation().state || {}
 
-  const image_url="https://chikadrian.alwaysdata.net/static/images/"
+  const image_url="https://chikadrian1.alwaysdata.net/static/images/"
 
 
 
@@ -31,7 +31,7 @@ const Mpesa = () => {
     
 
     
-      const response=await axios.post("https://chikadrian.alwaysdata.net/api/mpesa_payment",data)
+      const response=await axios.post("https://chikadrian1.alwaysdata.net/api/mpesa_payment",data)
 
       setSuccess(response.message) 
       setLoading ("")    
@@ -52,7 +52,18 @@ const Mpesa = () => {
     <div className='row justify-content-center'>
         <h1>Mpesa Payments-Lipa na mpesa</h1>
 
-        <img src={image_url+product.product_photo}  className='product_img mt-3'/>
+        {/* <img src={image_url+product.product_photo}  className='product_img mt-3'/> */}
+
+        <img
+        src={image_url + product.product_photo}
+        className='product_img mt-3'
+        style={{
+          width: "400px",
+          height: "450px",
+          objectFit: "cover",
+          borderRadius: "10px"
+        }}
+         />
         <p className='text-success'>{product.product_name}</p>
         <p className='text-secondary'>{product.product_description}</p>
         <p className='text-warning'>{product.product_cost}</p>
@@ -73,8 +84,10 @@ const Mpesa = () => {
             required
             />
            <br />
+           
 
            <input type="submit" className='btn btn-secondary w-100' value='Make Payments' />
+           <br /><br />
 
 
 

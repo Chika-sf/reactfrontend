@@ -15,16 +15,23 @@
 }
 
 .App-header {
-  background-color: #f58b27;
+  background-color: white;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items:start;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
   
 }
+
+/* main component styling */
+/* .main-content {
+  background: white;
+  min-height: 100vh;
+  padding: 20px;
+} */
 
 
 .product_img{
@@ -33,10 +40,10 @@
   object-fit: contain;
 }
 
-.product_img:hover{
+/* .product_img:hover{
   transform: scale(1.2);
   transition: 3s;
-}
+} */
 
 .App-link {
   color: #61dafb;
@@ -49,5 +56,367 @@
   to {
     transform: rotate(360deg);
   }
+}
+/* Hamburger (hidden on desktop) */
+
+
+.logo {
+  width: 120px;
+  height: auto;
+}
+
+
+
+  .close-icon {
+  display: none;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 15px;
+  text-align: right;
+}
+
+/* show only on mobile */
+@media (max-width: 768px) {
+  .close-icon {
+    display: block;
+    align-self: flex-end;
+  }
+}
+
+ 
+
+/* carousel */
+.carousel-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto;
+  margin-top: 20px;
+  z-index: 1;
+  position: relative;
+
+  border-radius: 50px;
+}
+
+
+.carousel-slide {
+  position: relative;
+}
+
+.carousel-img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+}
+
+/* TEXT OVERLAY */
+.carousel-text {
+  position: absolute;
+  top: 80%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align:left;
+  padding: 20px 30px;
+  border-radius: 10px;
+}
+
+.carousel-text h2 {
+  font-size: 32px;
+}
+
+.carousel-text p {
+  font-size: 16px;
+}
+
+
+/* footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #111;
+  color: white;
+  padding: 40px 30px;
+}
+
+.footer-col {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+}
+
+.footer-col h3 {
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #fff;
+}
+
+.footer-col a {
+  display: block;
+  color: #ccc;
+  text-decoration: none;
+  margin: 6px 0;
+  transition: 0.3s;
+}
+
+.footer-col a:hover {
+  color: #1e5eff;
+}
+
+.footer-line {
+  margin-top: 15px;
+  border: none;
+  height: 1px;
+  background-color: #555;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Social icons */
+.social-icons {
+  display: flex;
+  gap: 15px;
+  font-size: 20px;
+  margin-left: 100px;
+}
+
+.social-icons a {
+  color: white;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  color: #1e5eff;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+}
+
+
+/* NAVBAR CONTAINER */
+.luxury-navbar {
+  background: #f8f5ef; /* cream */
+  
+  width: 92%;
+  margin: 20px auto; /* centers it */
+
+      
+  padding: 15px 30px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 50px; /* 👈 CURVE */
+  
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08); /* soft floating shadow */
+
+  position: sticky;
+  top: 10px;
+  z-index: 1000;
+}
+/* LOGO */
+.logo {
+  height: 60px;
+  object-fit: contain;
+}
+
+/* RIGHT SIDE LINKS */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+/* LINKS */
+.nav-right a {
+  text-decoration: none;
+  color: #1a1a1a;
+  font-weight: 500;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* HOVER EFFECT (SUBTLE UNDERLINE LIKE DRIBBBLE) */
+.nav-right a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  background: #e79d15; /* gold accent */
+  left: 0;
+  bottom: -5px;
+  transition: 0.3s ease;
+}
+
+.nav-right a:hover::after {
+  width: 100%;
+}
+
+/* ACTIVE LINK */
+.active-link {
+  color: #b68730;
+}
+
+/* HAMBURGER */
+.hamburger {
+  display: none;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+/* MOBILE MENU */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-right {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 250px;
+    height: 100vh;
+    background: #f8f5ef;
+    flex-direction: column;
+    padding: 40px 20px;
+    transition: 0.3s ease;
+  }
+
+  .nav-right.active {
+    right: 0;
+  }
+
+  .close-icon {
+    align-self: flex-end;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+}
+
+
+
+
+
+
+/* PROPERTY CARDS
+
+.property-card{
+  background: white;
+  border-radius: 25px;
+  overflow: hidden;
+  transition: 0.4s;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.property-card:hover{
+  transform: translateY(-10px);
+}
+
+.image-container{
+  position: relative;
+}
+
+.property-image{
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.property-tag{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #c9a96e;
+  color: black;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-weight: 600;
+}
+
+.property-content{
+  padding: 25px;
+}
+
+.property-content h3{
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #111;
+}
+
+.property-content p{
+  color: gray;
+  line-height: 1.7;
+}
+
+.property-content h4{
+  margin: 20px 0;
+  color: #c9a96e;
+  font-weight: bold;
+}
+
+.property-btn{
+  width: 100%;
+  border: none;
+  padding: 14px;
+  border-radius: 50px;
+  background: #111;
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.property-btn:hover{
+  background: #c9a96e;
+  color: black;
+} */
+
+
+/* filter */
+
+.floating-filter-container{
+  width: 80%;
+  margin: -40px auto 20px auto;
+  background:white;
+  padding: 12px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 50px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+  position: relative;
+}
+
+.floating-filter-container .luxury-input,
+.floating-filter-container .form-select{
+  height: 38px;
+  border-radius: 30px;
+  border: #555;
+  background: transparent;
+  padding: 0 15px;
+  outline:#433f3f;
+  font-size: 14px;
+}
+
+.floating-filter-container .luxury-search-btn{
+  height: 38px;
+  border-radius: 30px;
+  padding: 0 20px;
 }
 

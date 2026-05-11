@@ -8,6 +8,7 @@ const SignUp = () => {
   const[email,setEmail]=useState()
   const[phone,setPhone]=useState()
   const[password,setPassword]=useState()
+  const [strength, setStrength] = useState("");
 
   // initialize other hooks for loading, success and error
   const[loading,setLoading]=useState()
@@ -35,7 +36,7 @@ const SignUp = () => {
 
     // call our api
 
-    const response=await axios.post("https://chikadrian.alwaysdata.net/api/signup",data)
+    const response=await axios.post("https://chikadrian1.alwaysdata.net/api/signup",data)
 
 
     setLoading("")
@@ -55,8 +56,15 @@ const SignUp = () => {
       
     }
     
-
   }
+
+      const checkStrength = (pass) => {
+      if (!pass) return "";
+      if (pass.length < 6) return "Weak";
+      if (pass.length < 10) return "Medium";
+      return "Strong";
+    };
+
   return (
     <div className='row justify-content-center mt-3'>
 
@@ -83,7 +91,32 @@ const SignUp = () => {
 
 
         {/* {password} */}
-        <input type="password" placeholder='Enter your password'className='form-control' required value={password} onChange={(e)=>setPassword(e.target.value)}/>
+        <input
+          type="password"
+          placeholder="Enter your password"
+          className="form-control"
+          required
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+            setStrength(checkStrength(e.target.value));
+          }}
+        />
+
+                    <p
+                      style={{
+                        marginTop: "5px",
+                        fontWeight: "bold",
+                        color:
+                          strength === "Weak"
+                            ? "red"
+                            : strength === "Medium"
+                            ? "orange"
+                            : "green",
+                      }}
+                      >
+                       Your Password Strength: {strength}
+                    </p>
         <br />
 
         <input type="submit" value="SignUp" className='w-100 form-control bg-info text-white b-1 ' required/>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios' 
+import { FaEye, FaEyeSlash } from "react-icons/fa"
 
 // axios js library that enable us to get our api's
 const SignIn = () => {
@@ -9,6 +10,8 @@ const SignIn = () => {
   // useState - used to initialize our hooks
     const[email,setEmail]=useState("")
     const[password,setPassword]=useState("")
+
+    const [showPassword, setShowPassword] = useState(false)
    
  
 
@@ -37,7 +40,7 @@ const SignIn = () => {
 
 
         // calling signin api(await help us when we wait for the promise-the api-we can do other things)
-        const response=await axios.post("https://chikadrian.alwaysdata.net/api/signin",data)
+        const response=await axios.post("https://chikadrian1.alwaysdata.net/api/signin",data)
         
 
         setLoading(""); {/*After a success the loading message to disappear */}
@@ -97,7 +100,30 @@ const SignIn = () => {
       <input type="email" placeholder='Email' required  className='form-control'  value={email} onChange={(e)=>setEmail(e.target.value)}/>
       <br />
 
-      <input type="password" placeholder='Password' required className='form-control' value={password} onChange={(e)=>setPassword(e.target.value)}/>
+        <div style={{ position: "relative" }}>
+        <input
+          type={showPassword ? "text" : "password"}
+          placeholder="Password"
+          required
+          className="form-control pe-5"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+
+        <span className='showpassword'
+          onClick={() => setShowPassword(!showPassword)}
+          style={{
+            position: "absolute",
+            right: "10px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            cursor: "pointer",
+            color: "#555"
+          }}
+        >
+          {showPassword ? <FaEyeSlash /> : <FaEye />}
+        </span>
+      </div>
       <br />
 
       <input type="submit" className='form-control bg-info text-white' value="Signin"/> 
